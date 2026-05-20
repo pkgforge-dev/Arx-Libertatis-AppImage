@@ -13,7 +13,7 @@ export STARTUPWMCLASS=arx-libertatis
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/arx*
+quick-sharun /usr/bin/arx* /usr/lib/libArxIO.so* /usr/share/games/arx
 
 # Additional changes can be done in between here
 
