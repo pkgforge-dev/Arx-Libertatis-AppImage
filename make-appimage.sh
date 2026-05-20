@@ -8,13 +8,13 @@ export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=/usr/share/icons/hicolor/scalable/apps/arx-libertatis.svg
+export ICON=/usr/share/icons/hicolor/256x256/apps/arx-libertatis.png
 export DESKTOP=/usr/share/applications/arx-libertatis.desktop
 export STARTUPWMCLASS=
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/arx
+quick-sharun /usr/bin/arx /usr/bin/arxsavetool /usr/bin/arxunpak
 
 # Additional changes can be done in between here
 
