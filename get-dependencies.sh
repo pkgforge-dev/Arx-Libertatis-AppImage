@@ -6,21 +6,43 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-# pacman -Syu --noconfirm PACKAGESHERE
+pacman -Syu --noconfirm \
+	boost 		\
+	cmake 		\
+	cppunit 	\
+	glew 		\
+	glm 		\
+	imagemagick \
+	inkscape    \
+	libepoxy 	\
+	openal 		\
+	qt6-base 	\
+	sdl2-compat
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
-# Comment this out if you need an AUR package
-#make-aur-package PACKAGENAME
+echo "Building Arx Libertatis..."
+echo "---------------------------------------------------------------"
+REPO="https://github.com/arx/ArxLibertatis"
+VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+git clone --depth 1 "$REPO" ./ArxLibertatis
+echo "$VERSION" > ~/version
 
-# If the application needs to be manually built that has to be done down here
-
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+cmake -S ./ArxLibertatis -B build \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
+	-DRUNTIME_DATADIR="" \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DUNITY_BUILD=ON \
+	-DINSTALL_SCRIPTS=ON \
+	-DBUILD_TOOLS=ON \
+	-DBUILD_TESTS=OFF \
+	-DUSE_NATIVE_FS=ON \
+	-DUSE_OPENAL=ON \
+	-DUSE_OPENGL=ON \
+	-DWITH_SDL=2 \
+	-DWITH_OPENGL=epoxy
+cmake --build build -j$(nproc)
+cmake --install build
