@@ -11,11 +11,13 @@ export ICON=/usr/share/icons/hicolor/256x256/apps/arx-libertatis.png
 export DESKTOP=/usr/share/applications/arx-libertatis.desktop
 export STARTUPWMCLASS=arx-libertatis
 export DEPLOY_OPENGL=1
+export DEPLOY_PULSE=1
 
 # Deploy dependencies
 quick-sharun /usr/bin/arx* /usr/lib/libArxIO.so* /usr/share/games/arx
 
 # Additional changes can be done in between here
+echo 'ANYLINUX_DO_NOT_LOAD_LIBS=libpipewire-0.3.so*:${ANYLINUX_DO_NOT_LOAD_LIBS}' >> ./AppDir/.env
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
