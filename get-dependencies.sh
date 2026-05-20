@@ -12,15 +12,11 @@ echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
-# Comment this out if you need an AUR package
-make-aur-package arx-libertatis
-
 # If the application needs to be manually built that has to be done down here
-
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+if [ "${DEVEL_RELEASE-}" = 1 ]; then
+	package=arx-libertatis-git
+else
+	package=arx-libertatis
+fi
+make-aur-package "$package"
+pacman -Q "$package" | awk '{print $2; exit}' > ~/version
