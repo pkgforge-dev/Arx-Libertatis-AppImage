@@ -11,9 +11,9 @@
 </p>
 
 
-| Latest Stable Release | Upstream URL |
-| :---: | :---: |
-| [Click here](https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/latest) | [Click here](https://github.com/arx/ArxLibertatis) |
+| Latest Stable Release | Latest Nightly Release | Upstream URL |
+| :---: | :---: | :---: |
+| [Click here](https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/latest) | [Click here](https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/tag/nightly) | [Click here](https://github.com/arx/ArxLibertatis) |
 
 </div>
 
