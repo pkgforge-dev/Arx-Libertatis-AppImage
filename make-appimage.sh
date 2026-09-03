@@ -7,8 +7,8 @@ export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=/usr/share/icons/hicolor/256x256/apps/arx-libertatis.png
-export DESKTOP=/usr/share/applications/arx-libertatis.desktop
+export ICON=https://raw.githubusercontent.com/arx/ArxLibertatis/5b95e4c5ca9d583f1b11c085326979772645e0f3/data/icons/arx-libertatis.svg
+export DESKTOP=https://raw.githubusercontent.com/arx/ArxLibertatis/refs/heads/master/data/icons/arx-libertatis.desktop
 export STARTUPWMCLASS=arx-libertatis
 export DEPLOY_OPENGL=1
 export DEPLOY_PULSE=1
