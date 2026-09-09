@@ -7,15 +7,15 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-	boost \
-	cmake \
-	cppunit \
-	freetype2 \
-	glew \
-	glm \
-	libepoxy \
-	openal \
-	qt6-base \
+	boost 		\
+	cmake 		\
+	cppunit 	\
+	glew 		\
+	glm 		\
+	inkscape    \
+	libepoxy 	\
+	openal 		\
+	qt6-base 	\
 	sdl2-compat
 
 echo "Installing debloated packages..."
