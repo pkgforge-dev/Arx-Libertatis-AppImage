@@ -9,11 +9,13 @@ echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
 	boost \
 	cmake \
+	cppunit \
 	freetype2 \
 	glew \
+	glm \
 	libepoxy \
 	openal \
-	qt5-base qt6-base \
+	qt6-base \
 	sdl2-compat
 
 echo "Installing debloated packages..."
@@ -42,4 +44,19 @@ else
 	git clone --branch v"$VERSION" --single-branch --depth 1 "$REPO" ./ArxLibertatis
 fi
 echo "$VERSION" > ~/version
-
+cmake -S ArxLibertatis -B build \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
+	-DRUNTIME_DATADIR="" \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DUNITY_BUILD=ON \
+	-DINSTALL_SCRIPTS=ON \
+	-DBUILD_TOOLS=ON \
+	-DBUILD_TESTS=OFF \
+	-DUSE_NATIVE_FS=ON \
+	-DUSE_OPENAL=ON \
+	-DUSE_OPENGL=ON \
+	-DWITH_SDL=2 \
+	-DWITH_OPENGL=epoxy
+cmake --build build -j$(nproc)
+cmake --install build
