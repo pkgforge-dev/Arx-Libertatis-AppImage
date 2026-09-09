@@ -33,17 +33,10 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Building Arx Libertatis..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/arx/ArxLibertatis"
-if [ "${DEVEL_RELEASE-}" = 1 ]; then
-    echo "Making nightly build of Arx Libertatis..."
-    echo "---------------------------------------------------------------"
-    VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
-    git clone --depth 1 "$REPO" ./ArxLibertatis
-else
-	echo "Making stable build of Arx Libertatis..."
-	VERSION="$(git ls-remote --tags --sort="v:refname" "$REPO" | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
-	git clone --branch v"$VERSION" --single-branch --depth 1 "$REPO" ./ArxLibertatis
-fi
+VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+git clone --depth 1 "$REPO" ./ArxLibertatis
 echo "$VERSION" > ~/version
+
 cmake -S ArxLibertatis -B build \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
