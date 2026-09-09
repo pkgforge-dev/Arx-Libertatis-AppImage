@@ -12,6 +12,7 @@ pacman -Syu --noconfirm \
 	cppunit 	\
 	glew 		\
 	glm 		\
+	imagemagick \
 	inkscape    \
 	libepoxy 	\
 	openal 		\
