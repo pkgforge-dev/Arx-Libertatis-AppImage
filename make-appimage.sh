@@ -14,7 +14,7 @@ export DEPLOY_OPENGL=1
 export DEPLOY_PULSE=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/arx* /usr/lib/libArxIO.so* /usr/share/games/arx
+quick-sharun /usr/bin/arx* /usr/lib/libArxIO.so* /usr/share/games/arx /usr/lib/libopenal.so*
 echo 'ANYLINUX_DO_NOT_LOAD_LIBS=libpipewire-0.3.so*:${ANYLINUX_DO_NOT_LOAD_LIBS}' >> ./AppDir/.env
 
 # Turn AppDir into AppImage
