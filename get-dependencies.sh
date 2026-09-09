@@ -23,14 +23,6 @@ echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
-# If the application needs to be manually built that has to be done down here
-#if [ "${DEVEL_RELEASE-}" = 1 ]; then
-#	package=arx-libertatis-git
-#else
-#	package=arx-libertatis
-#fi
-#make-aur-package "$package"
-#pacman -Q "$package" | awk '{print $2; exit}' > ~/version
 echo "Building Arx Libertatis..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/arx/ArxLibertatis"
@@ -38,7 +30,7 @@ VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
 git clone --depth 1 "$REPO" ./ArxLibertatis
 echo "$VERSION" > ~/version
 
-cmake -S ArxLibertatis -B build \
+cmake -S ./ArxLibertatis -B build \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
 	-DRUNTIME_DATADIR="" \
